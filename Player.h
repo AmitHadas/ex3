@@ -31,7 +31,6 @@ public:
      * @return boolean
      */
     virtual bool hasMoreMoves() = 0;
-//    virtual ~Player() = 0;
 
 private:
     Cell :: Value value;

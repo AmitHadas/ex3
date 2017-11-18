@@ -37,5 +37,14 @@ void Cell :: setValue(Cell :: Value newValue) {
     this->value = newValue;
 }
 
+Cell::Value Cell ::getOpponentVal(Cell::Value value) {
+    if (value == Cell::X) {
+        return Cell::O;
+    } else if (value == Cell::O) {
+        return Cell::X;
+    } else {
+        return Cell::Empty;
+    }
+}
 Cell :: ~Cell() {
 }

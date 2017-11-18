@@ -18,6 +18,8 @@ public:
      * @param col - col size.
      */
     Coordinate(int row, int col);
+
+    Coordinate();
     /**
      *
      * @return row member.

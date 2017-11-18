@@ -24,6 +24,8 @@ public:
  * @param logic - the logic of the game.
  */
     Board(int rowSize, int colSize, GameLogic *logic);
+
+    Board(Board &b);
 /**
  * This function shows the boars in the console game.
  */

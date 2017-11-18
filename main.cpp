@@ -2,6 +2,8 @@
 #include "RegularLogic.h"
 #include "HumanPlayer.h"
 #include "ConsoleScreen.h"
+#include "AIPlayer.h"
+
 /**
  * Noa or
  * 208385534
@@ -9,7 +11,7 @@
 int main() {
     GameLogic *logic = new RegularLogic();
     Player *player1 = new HumanPlayer(Cell ::X, logic);
-    Player *player2= new HumanPlayer(Cell ::O, logic);
+    Player *player2= new AIPlayer(Cell ::O, logic);
     Screen *screen = new ConsoleScreen();
     GameFlow game = GameFlow(logic, player1, player2, screen);
     game.playOneTurn();

@@ -35,6 +35,8 @@ public:
      * draws the value of the cell.
      */
     void draw() const;
+
+    Cell::Value getOpponentVal(Cell::Value value);
     /**
      * destructor
      */

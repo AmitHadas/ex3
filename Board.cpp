@@ -38,6 +38,25 @@ Board :: Board(int rowSize, int colSize, GameLogic *logic) {
 
 
 }
+
+Board ::Board(Board &old_board) {
+    this->gameLogic = old_board.gameLogic;
+    this->rowSize = old_board.rowSize;
+    this->colSize = old_board.colSize;
+    this->boardTable = new Cell**[rowSize];
+
+    // for every cell in the row, make new column of cells.
+    for (int i = 0; i < rowSize; i++) {
+        this -> boardTable[i] = new Cell*[colSize];
+    }
+    for (int i = 0; i < rowSize; i++) {
+        for (int j = 0; j < colSize; j++) {
+            this -> boardTable[i][j] =
+                    new Cell(old_board.getCellAt(Coordinate(i, j))->getValue());
+        }
+    }
+
+}
 /**
  * This function shows the boars in the console game.
  */

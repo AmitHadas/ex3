@@ -59,7 +59,7 @@ public:
      * destructor
      */
     ~Board();
-    bool operator==(Board &board)const;
+    bool operator==(const Board &board)const;
     void updateCell(int x, int y, Cell::Value value);
 private:
     Cell*** boardTable;

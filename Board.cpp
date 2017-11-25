@@ -144,7 +144,7 @@ Board ::~Board() {
     delete(boardTable);
 }
 
-bool Board :: operator==(Board &board) const {
+bool Board :: operator==(const Board &board) const {
     if (this->colSize != board.colSize || this->rowSize != board.rowSize) {
         return false;
     }

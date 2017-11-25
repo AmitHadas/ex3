@@ -11,11 +11,9 @@
 using namespace std;
 
     class Board_test : public testing::Test {
-//    public:
-//            Board b1;
-//            Board b2;
+
     public:
-       // Board_test () : b1(8, 8, new RegularLogic()), b2(8, 8, new RegularLogic()) {};
+        Board_test ();
         virtual void SetUp();
         virtual void TearDown();
     };

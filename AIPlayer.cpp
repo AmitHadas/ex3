@@ -67,7 +67,7 @@ list<Coordinate> AIPlayer :: getOptionsList(Board *board) {
     return optionsList;
 }
 
-int AIPlayer ::bestOpponentChoice(Board *board, Cell::Value opponentVal) {
+int AIPlayer :: bestOpponentChoice(Board *board, Cell::Value opponentVal) {
     int max = 0;
     int listSize;
     for (int i = 0; i < board->getRowSize(); i++) {

@@ -12,7 +12,6 @@ void ConsoleScreen::showBoard(Board *board) {
 }
 void ConsoleScreen :: gameOverScreen(Board *board) {
 
-
     int numOfX = 0, numOfO = 0;
     for (int i = 0; i < board->getRowSize(); i++) {
         for (int j = 0; j < board->getColSize(); j++) {

@@ -30,6 +30,7 @@ public:
      * @return col member.
      */
     int getCol() const;
+    bool operator==(const Coordinate &coordinate) const;
 private:
     int row;
     int col;

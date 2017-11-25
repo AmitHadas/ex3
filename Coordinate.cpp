@@ -21,3 +21,6 @@ int Coordinate ::getCol() const {
 int Coordinate ::getRow() const {
     return this -> row;
 }
+bool Coordinate :: operator==(const Coordinate &coordinate) const {
+    return this->row == coordinate.row && this->col == coordinate.col;
+}

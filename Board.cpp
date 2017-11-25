@@ -143,3 +143,21 @@ Board ::~Board() {
     }
     delete(boardTable);
 }
+
+bool Board :: operator==(Board &board) const {
+    if (this->colSize != board.colSize || this->rowSize != board.rowSize) {
+        return false;
+    }
+    for(int i = 0; i < this->rowSize; i++) {
+        for(int j = 0; j < this->colSize; j++) {
+            if(this->boardTable[i][j]->getValue() != board.boardTable[i][j]->getValue()) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+void Board :: updateCell(int x, int y, Cell::Value value) {
+    this->boardTable[x][y]->setValue(value);
+}

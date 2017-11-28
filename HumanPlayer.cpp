@@ -51,7 +51,7 @@ Coordinate HumanPlayer ::doYourTurn(Board *board) {
         Coordinate choice = this->getChoice(optionsList);
         return choice;
     } else {
-        this->hasMove = false;
+        movePasses();
     }
 
 
@@ -92,3 +92,13 @@ Cell ::Value HumanPlayer :: getVal() const {
 bool HumanPlayer ::hasMoreMoves() {
     return this->hasMove;
 }
+
+void HumanPlayer::movePasses() {
+    this->hasMove = false;
+    char key;
+    cout << "No possible moves. Play passes back to the other player.";
+    cout << "Press any key + Enter to continue.";
+    cin >> key;
+}
+
+void HumanPlayer:: printChoice(Coordinate c){}

@@ -23,7 +23,6 @@ Coordinate AIPlayer :: doYourTurn(Board *board) {
     list<Coordinate> :: const_iterator listIter;
     int m, min = 0;
     Cell c(Cell::Empty);
-//    map<Coordinate, int> optionsMap;
     map<int, Coordinate> optionsMap;
     for (listIter = optionsList.begin(); listIter != optionsList.end(); ++listIter) {
         Board *tempBoard = new Board(*board);
@@ -31,8 +30,13 @@ Coordinate AIPlayer :: doYourTurn(Board *board) {
         tempBoard->updateBoard(optionCoor, this->value);
         m = bestOpponentChoice(tempBoard, c.getOpponentVal(this->value));
         optionsMap[m] = *listIter;
+        delete(tempBoard);
     }
 
+    if (optionsMap.empty()) {
+        movePasses();
+        return Coordinate(-1,-1);
+    }
     map<int, Coordinate> :: const_iterator mapIter;
 
     for (mapIter = optionsMap.begin(); mapIter != optionsMap.end(); mapIter++) {
@@ -43,12 +47,8 @@ Coordinate AIPlayer :: doYourTurn(Board *board) {
             min = mapIter->first;
         }
     }
-    cout<<"AIplayer chose: (" << optionsMap[min].getRow() + 1
-        << ", " << optionsMap[min].getCol() + 1 << ")" << endl;
     Coordinate best(optionsMap[min].getRow() + 1, optionsMap[min].getCol() + 1);
     return best;
-
-
 
 }
 
@@ -82,4 +82,14 @@ int AIPlayer :: bestOpponentChoice(Board *board, Cell::Value opponentVal) {
         }
     }
     return max;
+}
+
+void AIPlayer ::movePasses() {
+    this->hasMove = false;
+    cout << "AIplayer has no moves. It's your move" << endl;
+}
+
+void AIPlayer::printChoice(Coordinate c) {
+    cout<<"AIplayer chose: (" << c.getRow()
+        << ", " << c.getCol() << ")" << endl;
 }

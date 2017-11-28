@@ -32,6 +32,10 @@ public:
      */
     virtual bool hasMoreMoves() = 0;
 
+    virtual void movePasses() = 0;
+
+    virtual void printChoice(Coordinate c) = 0;
+
 private:
     Cell :: Value value;
     GameLogic *logic;

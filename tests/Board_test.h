@@ -18,10 +18,4 @@ using namespace std;
         virtual void TearDown();
     };
 
-
-
-
-
-
-
 #endif //EX3_BOARD_TEST_H

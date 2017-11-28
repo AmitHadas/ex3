@@ -22,3 +22,25 @@ TEST_F(Board_test, checkUpdateBoard) {
     updatedBoard.updateCell(3, 3, Cell::O);
     EXPECT_EQ(firstBoard, updatedBoard);
 }
+
+TEST_F(Board_test, updateLastTurn) {
+    RegularLogic r;
+    Board board(4, 4, &r);
+    board.updateBoard(Coordinate(1, 2), Cell::X);
+    board.updateBoard(Coordinate(1, 1), Cell::O);
+    board.updateBoard(Coordinate(2, 1), Cell::X);
+    board.updateBoard(Coordinate(1, 3), Cell::O);
+    board.updateBoard(Coordinate(1, 4), Cell::X);
+    board.updateBoard(Coordinate(3, 1), Cell::O);
+    board.updateBoard(Coordinate(4, 1), Cell::X);
+    board.updateBoard(Coordinate(2, 4), Cell::O);
+    board.updateBoard(Coordinate(3, 4), Cell::X);
+    board.updateBoard(Coordinate(4, 2), Cell::O);
+    board.updateBoard(Coordinate(4, 3), Cell::X);
+
+    EXPECT_EQ(board.getCellAt(Coordinate(3, 3))->getValue(), Cell::Empty);
+    board.updateBoard(Coordinate(4,4), Cell::O);
+
+    EXPECT_EQ(board.getCellAt(Coordinate(3, 3))->getValue(), Cell::O);
+
+}

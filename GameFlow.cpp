@@ -9,7 +9,7 @@
 
 
 GameFlow ::GameFlow(GameLogic *logic, Player *player1, Player *player2, Screen *screen) {
-    this->board = new Board(8, 8, logic);
+    this->board = new Board(2, 2, logic);
     this->logic = logic;
     this->player1 = player1;
     this->player2 = player2;
@@ -26,9 +26,8 @@ void GameFlow ::playOneTurn() {
         Coordinate coor = player1->doYourTurn(this->board);
         if (player1->hasMoreMoves()) {
             this->board->updateBoard(coor, player1->getVal());
+            player1->printChoice(coor);
             this->screen->showBoard(this->board);
-        } else {
-            movePasses();
         }
         if (this->isBoardFull()) {
             break;
@@ -36,9 +35,8 @@ void GameFlow ::playOneTurn() {
         coor = player2->doYourTurn(this->board);
         if (player2->hasMoreMoves()) {
             this->board->updateBoard(coor, player2->getVal());
+            player2->printChoice(coor);
             this->screen->showBoard(this->board);
-        } else {
-            movePasses();
         }
     }
     this->screen->gameOverScreen(board);
@@ -55,12 +53,7 @@ bool GameFlow ::isBoardFull() {
     }
     return isFull;
 }
-void GameFlow ::movePasses() {
-        char key;
-        cout << "No possible moves. Play passes back to the other player.";
-        cout << "Press any key + Enter to continue.";
-        cin >> key;
-}
+
 
 
 GameFlow ::~GameFlow() {

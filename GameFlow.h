@@ -30,10 +30,6 @@ public:
      */
     void playOneTurn();
     /**
-     * prints that the current player has no turns and gets a key.
-     */
-    void movePasses();
-    /**
      * checks if the board is full.
      * @return
      */

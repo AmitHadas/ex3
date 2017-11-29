@@ -18,7 +18,7 @@ bool AIPlayer ::hasMoreMoves() {
     return this->hasMove;
 }
 
-Coordinate AIPlayer :: doYourTurn(Board *board) {
+Coordinate AIPlayer :: doYourTurn(Board *board, Screen *screen) {
     list<Coordinate> optionsList = getOptionsList(board);
     list<Coordinate> :: const_iterator listIter;
     int m, min = 0;
@@ -34,7 +34,7 @@ Coordinate AIPlayer :: doYourTurn(Board *board) {
     }
 
     if (optionsMap.empty()) {
-        movePasses();
+        movePasses(screen, this->valueToChar(this->value));
         return Coordinate(-1,-1);
     }
     map<int, Coordinate> :: const_iterator mapIter;
@@ -84,12 +84,13 @@ int AIPlayer :: bestOpponentChoice(Board *board, Cell::Value opponentVal) {
     return max;
 }
 
-void AIPlayer ::movePasses() {
+void AIPlayer ::movePasses(Screen *screen, char value) {
     this->hasMove = false;
-    cout << "AIplayer has no moves. It's your move" << endl;
+    screen->showMovePasses(this->getVal());
 }
 
-void AIPlayer::printChoice(Coordinate c) {
-    cout<<"AIplayer chose: (" << c.getRow()
-        << ", " << c.getCol() << ")" << endl;
+void AIPlayer::showChoice(Coordinate c, Screen *screen) const {
+
+    screen->showPlayersChoice(this->getVal(), c);
+
 }

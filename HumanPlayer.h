@@ -22,13 +22,13 @@ public:
      * @param board - the board.
      * @return - the chosen coordinate.
      */
-    virtual Coordinate doYourTurn(Board *board);
+    virtual Coordinate doYourTurn(Board *board, Screen *screen);
     /**
      * gets he choice.
      * @param optionsList - list of option cells.
      * @return the chosen coordinate.
      */
-    Coordinate getChoice(list<Coordinate> optionsList) const;
+    Coordinate getChoice(list<Coordinate> optionsList, Screen *screen) const;
     /**
      *
      * @return the player's value.
@@ -39,10 +39,17 @@ public:
      * @return boolean
      */
     virtual bool hasMoreMoves();
-
-    virtual void movePasses();
-
-    virtual void printChoice(Coordinate c);
+    /**
+     * The function handles the case that the player had no moves.
+     * @param screen - the screen to show that he has no moves.
+     */
+    virtual void movePasses(Screen *screen, char value);
+    /**
+     * The function shows what the player chose.
+     * @param c - the chosen coordinate.
+     * @param screen - the screen.
+     */
+    virtual void showChoice(Coordinate c, Screen *screen) const;
 
 private:
     Cell::Value value;

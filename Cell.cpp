@@ -12,22 +12,6 @@ Cell :: Cell(Cell :: Value value) {
     this->value = value;
 }
 
-void Cell ::draw() const {
-    switch (this -> value) {
-        case X:
-            cout << "X";
-            break;
-        case O:
-            cout << "O";
-            break;
-        case Empty:
-            cout << " ";
-            break;
-        default:
-            cout << " ";
-    }
-
-}
 
 Cell :: Value Cell :: getValue() const {
     return this->value;
@@ -46,5 +30,13 @@ Cell::Value Cell ::getOpponentVal(Cell::Value value) {
         return Cell::Empty;
     }
 }
-Cell :: ~Cell() {
+Cell :: ~Cell() {}
+
+char Cell::valueToChar() const {
+    if (this->value == Cell::O) {
+        return 'O';
+    } else if (this->value == Cell::X){
+        return 'X';
+    }
+    return ' ';
 }

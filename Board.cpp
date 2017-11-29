@@ -57,36 +57,7 @@ Board ::Board(Board &old_board) {
     }
 
 }
-/**
- * This function shows the boars in the console game.
- */
-void Board ::showBoard() {
-    cout << '\n' << "current board:" << endl;
-    for (int i = 0; i < this->colSize; i++) {
-        cout << " | " << i + 1;
-    }
-    cout << " | " << '\n';
-    for (int i = 0; i < (colSize * 4 + 2); i++) {
-        cout << "-";
-    }
 
-    for (int i = 0; i < this->rowSize; i++) {
-        cout << '\n';
-        cout << i + 1 << "|";
-        for (int j = 0; j < this -> colSize; j++) {
-            if (j == 0) {
-                cout << " ";
-            }
-            this->boardTable[i][j] -> draw();
-            cout << " | ";
-        }
-        cout << '\n';
-        for (int j = 0; j < (colSize * 4 + 2); j++) {
-            cout << '-';
-        }
-    }
-    cout << '\n' << endl;
-}
 /**
  * this function needs to flip all the cells in the
  * list and show the board again.

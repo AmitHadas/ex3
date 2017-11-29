@@ -11,8 +11,9 @@
 
 #include "Board.h"
 #include "Screen.h"
+#include "Player.h"
 
-class ConsoleScreen : public Screen{
+class ConsoleScreen : public Screen {
 public:
     /**
      * the function shows the screen.
@@ -24,7 +25,24 @@ public:
      * @param board
      */
     virtual void gameOverScreen(Board *board);
+    /**
+     * The function prints the player's choice.
+     * @param val - the player's value.
+     * @param c - the coordinate that the player chose.
+     */
+    virtual void showPlayersChoice(Cell::Value val, Coordinate c);
 
+    /**
+     * The function prints that the move passes to the other player.
+     * @param val - the player's value.
+     */
+    virtual void showMovePasses(Cell::Value val) const;
+    /**
+     * The function shows that the chosen move is unvalid.
+     */
+    virtual void showUnValidMove() const;
+
+    virtual void showOptions(list<Coordinate> optionsList, char value) const;
 
 };
 

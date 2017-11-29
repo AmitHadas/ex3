@@ -13,8 +13,7 @@ using namespace std;
 class logic_test : public testing::Test  {
 
 public:
-//    Board b1;
-//    Board b2;
+
 public:
     logic_test ();
     virtual void SetUp();

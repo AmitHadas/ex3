@@ -11,10 +11,7 @@ Coordinate ::Coordinate(int row, int col) {
     this->row = row;
     this->col = col;
 }
-Coordinate ::Coordinate() {
-//    this->row ; oldCoor.row;
-//    this->col = oldCoor.col;
-}
+Coordinate ::Coordinate() {}
 int Coordinate ::getCol() const {
     return this ->col;
 }

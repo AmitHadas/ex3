@@ -31,16 +31,15 @@ public:
      * to be the received value.
      */
     void setValue(Cell :: Value newValue);
-    /**
-     * draws the value of the cell.
-     */
-    void draw() const;
 
     Cell::Value getOpponentVal(Cell::Value value);
     /**
      * destructor
      */
     ~Cell();
+
+
+    char valueToChar() const;
 private:
     Cell :: Value value;
 };

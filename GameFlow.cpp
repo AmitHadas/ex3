@@ -6,10 +6,10 @@
  * 208385534
  */
 #include "GameFlow.h"
-
+#define BOARD_SIZE 8
 
 GameFlow ::GameFlow(GameLogic *logic, Player *player1, Player *player2, Screen *screen) {
-    this->board = new Board(2, 2, logic);
+    this->board = new Board(BOARD_SIZE, BOARD_SIZE, logic);
     this->logic = logic;
     this->player1 = player1;
     this->player2 = player2;
@@ -23,19 +23,19 @@ void GameFlow ::playOneTurn() {
         if (this->isBoardFull()) {
             break;
         }
-        Coordinate coor = player1->doYourTurn(this->board);
+        Coordinate coor = player1->doYourTurn(this->board, this->screen);
         if (player1->hasMoreMoves()) {
             this->board->updateBoard(coor, player1->getVal());
-            player1->printChoice(coor);
+            player1 -> showChoice(coor, screen);
             this->screen->showBoard(this->board);
         }
         if (this->isBoardFull()) {
             break;
         }
-        coor = player2->doYourTurn(this->board);
+        coor = player2->doYourTurn(this->board, this->screen);
         if (player2->hasMoreMoves()) {
             this->board->updateBoard(coor, player2->getVal());
-            player2->printChoice(coor);
+            player2 -> showChoice(coor, screen);
             this->screen->showBoard(this->board);
         }
     }

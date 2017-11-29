@@ -25,11 +25,11 @@ public:
  */
     Board(int rowSize, int colSize, GameLogic *logic);
 
+    /**
+     * Copy Constructor.
+     * @param b - the board that should be copied.
+     */
     Board(Board &b);
-/**
- * This function shows the boars in the console game.
- */
-    void showBoard();
 
 /**
  * this function needs to flip all the cells in the
@@ -59,7 +59,18 @@ public:
      * destructor
      */
     ~Board();
+    /**
+     * The function implements the "==" operator.
+     * @param board - a board to be compared.
+     * @return boolean - if the boards are equal, it is true.
+     */
     bool operator==(const Board &board)const;
+    /**
+     * The function updates the cell's value.
+     * @param x - the x coordinate.
+     * @param y - the y coordinate.
+     * @param value - the new value.
+     */
     void updateCell(int x, int y, Cell::Value value);
 private:
     Cell*** boardTable;

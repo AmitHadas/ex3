@@ -8,13 +8,13 @@
 #include <list>
 #include <limits>
 #include "HumanPlayer.h"
-
+#include "Screen.h"
 HumanPlayer ::HumanPlayer(Cell::Value value, GameLogic *logic) {
     this ->value = value;
     this->logic = logic;
     this->hasMove = true;
 }
-Coordinate HumanPlayer ::doYourTurn(Board *board) {
+Coordinate HumanPlayer ::doYourTurn(Board *board, Screen *screen) {
     list<Coordinate> optionsList;
     int row = board->getRowSize(), col = board->getColSize();
     for (int i = 0; i < row; i++) {
@@ -34,30 +34,33 @@ Coordinate HumanPlayer ::doYourTurn(Board *board) {
         stringVal = 'O';
     }
 
-    cout << '\n' << stringVal << ": It's your move" << endl;
+
+
+//    cout << '\n' << stringVal << ": It's your move" << endl;
     if (!optionsList.empty()) {
         this->hasMove = true;
-        cout << "Your possible moves:";
-        list<Coordinate>::const_iterator listIterator;
-        for (listIterator = optionsList.begin();
-             listIterator != optionsList.end(); ++listIterator) {
-            if (!(listIterator == optionsList.begin())) {
-                cout << ", ";
-            }
-            int x = listIterator->getRow() + 1, y = listIterator->getCol() + 1;
-            cout << "(" << x << "," << y << ")";
-        }
-        cout << '\n' << "Please enter your move row, col:";
-        Coordinate choice = this->getChoice(optionsList);
+        screen->showOptions(optionsList, stringVal);
+//        cout << "Your possible moves:";
+//        list<Coordinate>::const_iterator listIterator;
+//        for (listIterator = optionsList.begin();
+//             listIterator != optionsList.end(); ++listIterator) {
+//            if (!(listIterator == optionsList.begin())) {
+//                cout << ", ";
+//            }
+//            int x = listIterator->getRow() + 1, y = listIterator->getCol() + 1;
+//            cout << "(" << x << "," << y << ")";
+//        }
+//        cout << '\n' << "Please enter your move row, col:";
+        Coordinate choice = this->getChoice(optionsList, screen);
         return choice;
     } else {
-        movePasses();
+        movePasses(screen, stringVal);
     }
 
 
 }
 
-Coordinate HumanPlayer ::getChoice(list<Coordinate> optionsList) const {
+Coordinate HumanPlayer ::getChoice(list<Coordinate> optionsList, Screen *screen) const {
     list<Coordinate> ::const_iterator listIterator;
         bool isInList = false;
         int num1 = -1, num2 = -1;
@@ -78,9 +81,8 @@ Coordinate HumanPlayer ::getChoice(list<Coordinate> optionsList) const {
             }
         }
         if (!isInList) {
-            cout << "Your choice is not valid."
-                    "Please make another choice.";
-            choice = this ->getChoice(optionsList);
+            screen->showUnValidMove();
+            choice = this ->getChoice(optionsList, screen);
         }
 
     return choice;
@@ -93,12 +95,11 @@ bool HumanPlayer ::hasMoreMoves() {
     return this->hasMove;
 }
 
-void HumanPlayer::movePasses() {
+void HumanPlayer::movePasses(Screen *screen, char value) {
     this->hasMove = false;
-    char key;
-    cout << "No possible moves. Play passes back to the other player.";
-    cout << "Press any key + Enter to continue.";
-    cin >> key;
+    screen->showMovePasses(this->getVal());
+
+
 }
 
-void HumanPlayer:: printChoice(Coordinate c){}
+void HumanPlayer:: showChoice(Coordinate c, Screen *screen) const {}

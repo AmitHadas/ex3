@@ -113,7 +113,7 @@ TEST_F(logic_test, emptyBoard) {
 
 }
 
-
+// the function checks the logic with several coordinates.
 TEST_F(logic_test, severalCoordinates) {
     RegularLogic logic;
     Board b(4,4, &logic);

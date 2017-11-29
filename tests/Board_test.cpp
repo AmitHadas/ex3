@@ -7,7 +7,7 @@
 Board_test :: Board_test (){}
 void Board_test :: SetUp(){}
 void Board_test ::TearDown(){}
-
+// the function checks if the board updates the board as expected.
 TEST_F(Board_test, checkUpdateBoard) {
     RegularLogic r;
     Board firstBoard(8, 8, &r);
@@ -22,7 +22,7 @@ TEST_F(Board_test, checkUpdateBoard) {
     updatedBoard.updateCell(3, 3, Cell::O);
     EXPECT_EQ(firstBoard, updatedBoard);
 }
-
+// the function checks if the board updates the board as expected in the last turn.
 TEST_F(Board_test, updateLastTurn) {
     RegularLogic r;
     Board board(4, 4, &r);

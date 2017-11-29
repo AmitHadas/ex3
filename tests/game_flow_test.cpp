@@ -12,7 +12,7 @@
 game_flow_test::game_flow_test(){}
 void game_flow_test::SetUp() {}
 void game_flow_test::TearDown() {}
-
+// the function checks that the board is full.
 TEST_F(game_flow_test, fullBoard) {
     RegularLogic logic;
     ConsoleScreen screen;
